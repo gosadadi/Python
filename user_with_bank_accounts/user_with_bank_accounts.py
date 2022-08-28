@@ -41,8 +41,19 @@ class User:
         self.age = age
         self.is_rewards_member = False
         self.gold_cards_points = 0
-        self.account=
-        
+        self.account = BankAccount(int_rate=0.03, balance=0)
+
+    def make_withdrawal(self, amount):
+        self.account.withdraw(amount)
+        return self
+
+    def display_user_balance(self):
+        self.account.balance
+        return self
+
+    def make_deposit(self, amount):
+        self.account.deposit(amount)
+        return self
 
     def display_info(self):
         print(self.first_name + self.last_name + self.email + str(self.age))
@@ -71,3 +82,4 @@ p1.spend_points(50)
 p2 = User("John", " Doe", " doe@gmail.com ", 40)
 p2.display_info()
 p2.enroll()
+p1.make_withdrawal(100)
