@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 # The "@" decorator associates this route with the function immediately following
-@app.route('/hello_flask')
+@app.route('/hello')
 def hello_world():
     return "Hello World!"  # Return the string 'Hello World!' as a response
 
