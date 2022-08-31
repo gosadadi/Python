@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Play Ground</title>
+        <style>
+            div {
+                display: inline-block;
+                margin: 10px auto;
+                {% if color==color %}
+                background-color:cadetblue;
+                {% endif %}
+                border: 1px solid black;
+                height: 100px;
+                width: 150px;
+            }
+            h3{
+                margin-left:200px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Welcome!</h3>
+        {% for x in range(times): %}
+        <div>
+        </div>
+        {% endfor %}
+    </body>
+
+</html>
