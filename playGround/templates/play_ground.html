@@ -10,9 +10,7 @@
             div {
                 display: inline-block;
                 margin: 10px auto;
-                {% if color==color %}
-                background-color:cadetblue;
-                {% endif %}
+                background-color:navy;
                 border: 1px solid black;
                 height: 100px;
                 width: 150px;
@@ -25,9 +23,8 @@
     <body>
         <h3>Welcome!</h3>
         {% for x in range(times): %}
-        <div>
+        <div style="background-color:{{color}};">
         </div>
         {% endfor %}
     </body>
-
 </html>
