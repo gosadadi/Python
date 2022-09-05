@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <title>counter</title>
-</head>
-<body>
-    <h2>counter</h2>
-    
 
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <title>counter</title>
+    </head>
+    <body>
+        <div class=".d-block mx-5 my-5">
+            <p>Counter: {{count}}</p>
+            
+        </div>
+        <div class="d-flex flex-row mx-5 px-5">
+            <form action='/users'class="border-primary">
+                <label for="count"></label>
+                <input type="submit" value="submit" name="times" style="background-color:blue; width:10;">
+            </form>
+            <form action="/reset" ,method="post" class="border-primary">
+                <input style="background-color:red; width:50;" name="Reset" type="submit"value="Reset">
+            </form>
+        </div>
+    </body>
 </html>
