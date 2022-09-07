@@ -5,10 +5,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    friends = Friend.get_all
+    friends=Friend.get_all()
     print(friends)
     return render_template("index.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)

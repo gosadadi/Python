@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>User</title>
+        <title>Document</title>
+    </head>
+    <body>
+        <h2 class="text-center my-3">Here are all users</h2>
+        <table class="table table-bordered w-50 p-3 mx-auto">
+            <thead>
+                <tr>
+                    <th scope="col">first_name</th>
+                    <th scope="col">last_name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">created_at</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td scope="row">{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email_address}}</td>
+                    <td>{{user.created_at}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button style="background-color:green;" type="submit" class="btn-primary my-md-3 p-3 mx-auto "><a href="/templates/new_user.html"></a>Add User</button>
+    </body>
+
+</html>
