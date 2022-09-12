@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Ninjas</title>
+</head>
+<body>
+    <div class="d-flex border  mx-auto w-100 my-3">
+        <form class="form-horizontal w-50 border " action="/create/ninja" method="post">
+            <div class="p-2 flex-fill w-50 mx-auto p-3">
+                <h2>New Ninja</h2>
+                <select name="dojo_id" class="form-select w-20 mx-3 my-3" value="">
+                    <option selected disabled>Pick Dojo</option>
+                    {% for dojo in all_dojos %}
+                    <option value="{{dojo.id}}"> {{dojo.name}}</option>
+                    {% endfor %}
+                </select>
+                <div>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" name="first_name">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" class="form-control" name="last_name">
+                    <label for="age">age:</label>
+                    <input type="text" class="form-control" name="age">
+                    <button style="background-color:green;" type="submit" class="btn btn-primary my-3 mx-auto">Create
+                    </button>
+                    <a href="/dojos" class="mx-5">Home</a>
+                </div>
+            </div>
+        </form>    
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+        <title>Lunch!</title>
+    </head>
+    <body>
+        <div class="card col-3 bg-light  text-dark my-3 mx-auto w-75">
+            <a href="/dojos" class=" btn-outline-primary mx-3 my-3">Home</a>
+            <div class="card-body">
+                <p>{{dojo.name}} Ninjas</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{dojo.ninjas.first_name}}</td>
+                            <td>{{dojo.ninjas.last_name}}</td>
+                            <td>{{dojo.ninjas.age}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <p class="card-subtitle">Created on: {{ dojo.ninjas.created_at}}
+                </p>
+            </div>
+            <a class="text-left" href="/edit_page/{{dojo['id']}}">Edit</a>
+            <a class="text-right" href="/delete/{{dojo['id']}}">Delete</a>
+        </div>
+    </body>
+</html>
