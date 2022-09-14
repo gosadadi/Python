@@ -24,14 +24,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for recipe in all_recipes %}
+            {% for recipe in all_recipe %}
             <tr>
                 <td>{{ recipe.name }}</td>
                 <td>{{ recipe.under_thirty}}</td>
-                <td>{{recipe.users.first_name}}</td>
+                <td>{{recipe.first_name}}</td>
                 <td>
-                    <a href="/recipe/show/recipe.id">view recipe</a>
-                    <a href="/recipe/edit/recipe.id ">Edit</a> |
+                    <a href="/recipes/{{recipe.id}}">view</a>|
+                    <a href="/recipe/edit/{{recipe.id}} ">Edit</a> |
                     <a href="/recipe/destroy/recipe.id ">Delete</a>
                 </td>
             </tr>
