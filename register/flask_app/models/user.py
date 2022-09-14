@@ -3,8 +3,7 @@ from flask_app import app
 from flask import flash
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-# from flask_bcrypt import Bcrypt        
-# bcrypt = Bcrypt(app)
+
 
 class User:
     def __init__(self,data):
@@ -18,7 +17,7 @@ class User:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT into users (first_name,last_name,email_address,password,confirm_password,created_at,updated_at) VALUES (%(first_name)s,%(last_name)s,%(email_address)s,%(password)s,NOW(),NOW());"
+        query = "INSERT into users (first_name,last_name,email_address,password,created_at,updated_at) VALUES (%(first_name)s,%(last_name)s,%(email_address)s,%(password)s,NOW(),NOW());"
         return connectToMySQL('userCR').query_db(query,data)
 
 
@@ -42,7 +41,7 @@ class User:
     @classmethod
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE email_address = %(email_address)s;"
-        results = connectToMySQL('userCR').queryquery_db(query,data)
+        results = connectToMySQL('userCR').query_db(query,data)
         if len(results) < 1:
             return False
         return User(results[0])
@@ -59,7 +58,7 @@ class User:
         return connectToMySQL('userCR').query_db(query,data)
     
     @staticmethod
-    def is_valid(user):
+    def validate_user(user):
         is_valid = True
         if len(user['first_name']) < 2:
             is_valid = False

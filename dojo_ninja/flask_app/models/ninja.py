@@ -20,11 +20,6 @@ class Ninja:
         return connectToMySQL('dojo_ninja').query_db(query, data)
     
     
-    
-    
-    
-    
-    
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM ninjas;"
@@ -35,12 +30,7 @@ class Ninja:
         return dojos
 
         
-        
-        
-        
-        
-        
-        
+    
         # self.bun = data['bun']
         # self.meat = data['meat']
         # self.calories = data['calories']

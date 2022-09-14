@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel=" stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+        <link rel=" stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+        <title>Add Recipe</title>
+    </head>
+
+    <body>
+        <form class=" p-2" action="/create/recipes" method="post">
+            <div class="col-5  text-dark mx-5 my-5 border ">
+                <div class="d-flex justify-content-end justify-content-evenly my-3">
+                    <a class="" aria-current="page" href="/recipes">back to recipes</a>
+                    <a class="" aria-current="page" href="/">logout</a>
+                </div>
+                <h2 class="mx-5">Add Recipe!</h2>
+                <div class="d-flex flex">
+                    <div class="p-2">
+                        {% with messages = get_flashed_messages(category_filter=['register']) %}
+                        {% if messages %}
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Recipe error!</strong>
+                            {% for message in messages %}
+                            <p>{{message}}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+                        <div class="form-group mx-3 my-3">
+                            <label for="">Name:</label>
+                            <input type="text" name="name">
+                        </div>
+                        <div class="form-group mx-3 my-3">
+                            <label for="">Description:</label>
+                            <textarea class="form-control" name="description" cols="10" rows="3"></textarea>
+                        </div>
+                        <div class="form-group mx-3 my-3">
+                            <label for="">Instructions:</label>
+                            <textarea class="form-control" name="instructions" id="" cols="10" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <p>Date Cooked /Made</p>
+                        <input type="date" id="start" name="created_at" value="2022-07-22" min="2021-01-01"
+                            max="2022-09-13">
+                        <div class="form-group my-5">
+                            <p>Under 30 minutes? </p>
+                            <label class="mx-2" for="Yes">Yes</label>
+                            <input type="radio" name="under_thirty" value="yes">
+                            <label class="mx-2" for="No">No</label>
+                            <input type="radio" name="under_thirty" value="no">
+                        </div>
+                        <div class="form-group mx-5 my-5">
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+
+</html>
