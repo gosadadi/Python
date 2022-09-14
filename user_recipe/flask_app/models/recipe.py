@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models.user import User
+from flask_app.models import user
 from flask import flash
 
 class Recipe:
@@ -29,7 +29,6 @@ class Recipe:
         return is_valid
 
 
-
     @classmethod
     def save(cls, data):
         query = "INSERT INTO recipes (name,description,instructions,under_thirty,created_at,updated_at,user_id) VALUES (%(name)s,%(description)s,%(instructions)s,%(under_thirty)s,%(created_at)s,NOW(),%(user_id)s);"
@@ -38,12 +37,13 @@ class Recipe:
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM recipes;"
+        query = "SELECT * FROM user_recipe.recipes LEFT JOIN user_recipe.users ON users.id=recipes.user_id;"
         results = connectToMySQL('user_recipe').query_db(query)
 
         recipes = []
         for recipe in results:
             recipes.append(cls(recipe))
+        print(recipes)
 
         return recipes
 

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="d-flex justify-content-between align-items-center py-2 px-5">
-        <h2 class="text-center">Welcome {{one_user.first_name}}!!!</h2>
+        <h2 class="text-center">Welcome {{ logged_user.first_name}}!!!</h2>
         <a href="/logout" class="btn btn-info">Logout</a>
         <a href="/recipes/new" class="btn btn-info">+Create</a>
     </div>
@@ -24,17 +24,15 @@
             </tr>
         </thead>
         <tbody>
-            {% for recipe in new_recipe %}
+            {% for recipe in all_recipes %}
             <tr>
                 <td>{{ recipe.name }}</td>
-                <td>{{ recipe_id.under_30 }}</td>
-                <td>{{ recipe.user.posted_by}}</td>
+                <td>{{ recipe.under_thirty}}</td>
+                <td>{{recipe.users.first_name}}</td>
                 <td>
-                    <a href="/recipe/show/{{ recipe.id }}">view recipe</a>
-                    {% if session[loged_id]==user.id%} |
-                    <a href="/recipe/edit/{{ recipe.id }}">Edit</a> |
-                    <a href="/recipe/destroy/{{ recipe.id }}">Delete</a>
-                    {% endif%}
+                    <a href="/recipe/show/recipe.id">view recipe</a>
+                    <a href="/recipe/edit/recipe.id ">Edit</a> |
+                    <a href="/recipe/destroy/recipe.id ">Delete</a>
                 </td>
             </tr>
             {% endfor %}
