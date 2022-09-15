@@ -7,16 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
         <title>Lunch!</title>
     </head>
 
     <body>
-
         <div class="card col-3 bg-dark  text-light my-3 mx-auto w-50">
+            <h3>Well Come {{logged_user.first_name}}!</h3>
             <a href="/recipes" class=" btn-outline-primary mx-3 my-3">Home</a>
             <div class="card-body">
-                <h2 class="card-title text-primary">Name:{{one_recipe['name'] }}</h2>
+                <h2 class="card-title text-primary">{{one_recipe['name'] }}</h2>
                 <p class="card-text">Description: {{one_recipe['description']}}</p>
                 <p class="card-text">Instructions: {{one_recipe['instructions']}}</p>
             </div>
@@ -24,11 +23,7 @@
                 <p>Under_30: {{one_recipe['under_thirty']}}</p>
                 <p class="card-subtitle">Created on: {{ one_recipe['created_at'].strftime("%B %d, %Y  at %H:%M:%S") }}
                 </p>
-                <p class="card-text">Created By: {{one_recipe[first_name]}}</p>
-            </div>
-            <div class="d-inline-flex p-2 justify-content-between">
-                <a href="/update/recipe">Update</a>
-                <a href="/delete/{{one_recipe['id']}}">Delete</a>
+                <p class="card-text">Created By: {{one_recipe.poster.first_name}}</p>
             </div>
         </div>
     </body>
