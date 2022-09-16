@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel=" stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+        <title>Add Recipe</title>
+    </head>
+
+    <body>
+        <form class=" p-2" action="/update/{{one_show.id}}" method="post">
+            <div class="col-5  text-dark mx-5 my-5 border ">
+                <div class="d-flex justify-content-end justify-content-evenly my-3">
+                    <a class="" aria-current="page" href="/shows">TV shows</a>
+                    <a class="" aria-current="page" href="/">logout</a>
+                </div>
+                <h2 class="mx-5">Edit Shows!</h2>
+                <div class="d-flex flex">
+                    <div class="p-2">
+                        <div class="form-group mx-3 my-3">
+                            <label for="title">title:</label>
+                            <input type="text" value="{{one_show.title}}" name="title">
+                        </div>
+                        <div class="form-group mx-3 my-3">
+                            <label for="">Network:</label>
+                            <input type="text" value="{{one_show.network}}" name="network">
+                        </div>
+                        <div class="form-group mx-3 my-3">
+                            <label for="release_date">Release Date:</label>
+                            <input type="date" id="start" name="release_date" max="2022-09-13"
+                                value="{{one_show.release_date}}">
+                        </div>
+                        <div class="form-group mx-3 my-3">
+                            <label for="">Description:</label>
+                            <textarea class="form-control" name="description" cols="10"
+                                rows="3">{{one_show.description}}</textarea>
+                        </div>
+                        <div class="form-group mx-5 my-5">
+                            <input type="hidden" name="user_id" value="{{one_show.user_id}}">
+                            <input type="submit" value="Update" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </body>
+
+</html>

@@ -19,15 +19,15 @@ def register():
     user_data = {
         "first_name": request.form["first_name"],
         "last_name": request.form["last_name"],
-        "email_address": request.form["email"],
+        "email": request.form["email"],
         "password": bcrypt.generate_password_hash(request.form["password"]),
     }
-    id = User.save(user_data)
-    if not id:
+    user_id= User.save(user_data)
+    if not user_id:
         flash("Email already taken.", "register")
         return redirect('/')
-    session['user_id'] = id
-    return redirect('/recipes')
+    session['user_id'] = user_id
+    return redirect('/shows')
 
 
 @app.route("/login", methods=['POST'])
@@ -35,17 +35,17 @@ def login():
     data = {
         "email": request.form['email']
     }
+    print("this is trying to get the user")
     this_user = User.get_by_email(data)
     if not this_user:
         flash("Invalid Email/Password", "login")
         return redirect("/")
     if not bcrypt.check_password_hash(this_user.password, request.form['password']):
+        print("wrong password")
         flash("Invalid Email/Password", "login")
         return redirect("/")
     session['user_id'] = this_user.id
-    print(this_user.id)
-    
-    return redirect('/recipes')
+    return redirect('/shows')
 
 
 @app.route('/logout')

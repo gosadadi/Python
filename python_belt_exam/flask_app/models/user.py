@@ -17,14 +17,14 @@ class User:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT into users (first_name,last_name,email,password,created_at,updated_at) VALUES (%(first_name)s,%(last_name)s,%(email_address)s,%(password)s,NOW(),NOW());"
-        return connectToMySQL('user_recipe').query_db(query,data)
+        query = "INSERT into users (first_name,last_name,email,password,created_at,updated_at) VALUES (%(first_name)s,%(last_name)s,%(email)s,%(password)s,NOW(),NOW());"
+        return connectToMySQL('python_belt').query_db(query,data)
 
 
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
-        results = connectToMySQL('user_recipe').query_db(query)
+        results = connectToMySQL('python_belt').query_db(query)
         users = []
         for user in results:
             users.append(cls(user))
@@ -33,7 +33,7 @@ class User:
     @classmethod
     def get_one(cls,data):
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        results = connectToMySQL('user_recipe').query_db(query,data)
+        results = connectToMySQL('python_belt').query_db(query,data)
         if len(results) < 1:
             return False
         return cls(results[0])
@@ -41,7 +41,7 @@ class User:
     @classmethod
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL('user_recipe').query_db(query,data)
+        results = connectToMySQL('python_belt').query_db(query,data)
         if len(results) < 1:
             return False
         one_instance=cls(results[0])
@@ -50,14 +50,14 @@ class User:
     @classmethod
     def get_last(cls):
         query = "SELECT * FROM users ORDER BY users.id DESC LIMIT 1;"
-        results = connectToMySQL('user_recipe').query_db(query)
+        results = connectToMySQL('python_belt').query_db(query)
         get_last_one=results([0])
         return get_last_one
     
     @classmethod
     def destroy(cls,data):
         query = "DELETE FROM users WHERE users.id = %(id)s;"
-        return connectToMySQL('user_recipe').query_db(query,data)
+        return connectToMySQL('python_belt').query_db(query,data)
     
     @staticmethod
     def validate_user(user):

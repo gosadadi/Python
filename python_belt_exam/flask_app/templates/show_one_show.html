@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Lunch!</title>
+    </head>
+
+    <body>
+        <div class="card col-3 bg-dark  text-light my-3 mx-auto w-50">
+            <h3>Well Come {{logged_user.first_name}}!</h3>
+            <a href="/shows" class=" btn-outline-primary mx-3 my-3">TV shows</a>
+            <a href="/" class=" btn-outline-primary mx-3 my-3">logout</a>
+            <div class="card-body">
+                <h2 class="card-title text-primary">{{one_show['title'] }}</h2>
+                <p class="card-text">Network: {{one_show['network']}}</p>
+                <p class="card-text">Release Date: {{one_show['release_date']}}</p>
+                <p class="card-text">Decription: {{one_show['description']}}</p>
+            </div>
+            <div class="card-footer">
+                <p class="card-subtitle">Created on: {{ one_show['created_at'].strftime("%B %d, %Y  at %H:%M:%S") }}
+                </p>
+                <p class="card-text">Created By: {{one_show.poster.first_name}} {{one_show.poster.last_name}}</p>
+            </div>
+        </div>
+    </body>
+
+</html>
